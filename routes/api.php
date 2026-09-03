@@ -61,4 +61,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/consents/grant',     [ConsentController::class, 'grant']);
     Route::post('/consents/revoke',    [ConsentController::class, 'revoke']);
     Route::post('/consents/check',     [ConsentController::class, 'check']);
+
+    require __DIR__ . '/../app/Modules/Nutrition/routes.php';
 });
