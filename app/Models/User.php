@@ -58,6 +58,16 @@ class User extends Authenticatable
         return $this->hasOne(Setting::class);
     }
 
+    public function userModules()
+    {
+        return $this->hasMany(UserModule::class);
+    }
+
+    public function userConsents()
+    {
+        return $this->hasMany(UserConsent::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
