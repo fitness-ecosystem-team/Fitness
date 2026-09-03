@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\EntitlementController;
 use App\Http\Controllers\Api\ActivitySummaryController;
+use App\Http\Controllers\Api\ConsentController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\UserModuleController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\StreakController;
@@ -50,4 +52,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/settings', [SettingController::class, 'update']);
 
     Route::get('/module/user-context', [ModuleController::class, 'userContext']);
+
+    Route::get('/modules',             [UserModuleController::class, 'index']);
+    Route::post('/modules/activate',   [UserModuleController::class, 'activate']);
+    Route::post('/modules/deactivate', [UserModuleController::class, 'deactivate']);
+
+    Route::get('/consents',            [ConsentController::class, 'index']);
+    Route::post('/consents/grant',     [ConsentController::class, 'grant']);
+    Route::post('/consents/revoke',    [ConsentController::class, 'revoke']);
+    Route::post('/consents/check',     [ConsentController::class, 'check']);
 });
