@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Goal;
+use App\Core\Models\Goal;
 use Illuminate\Http\Request;
 
 class GoalController extends Controller

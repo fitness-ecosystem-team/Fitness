@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\ActivitySummary;
+use App\Core\Models\ActivitySummary;
 use Illuminate\Http\Request;
 
 class ActivitySummaryController extends Controller

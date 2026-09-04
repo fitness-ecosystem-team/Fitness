@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\ProfileController;
-use App\Http\Controllers\Api\EntitlementController;
-use App\Http\Controllers\Api\ActivitySummaryController;
-use App\Http\Controllers\Api\ConsentController;
-use App\Http\Controllers\Api\ModuleController;
-use App\Http\Controllers\Api\UserModuleController;
-use App\Http\Controllers\Api\NotificationController;
-use App\Http\Controllers\Api\SettingController;
-use App\Http\Controllers\Api\StreakController;
-use App\Http\Controllers\Api\BodyMeasurementController;
-use App\Http\Controllers\Api\GoalController;
-use App\Http\Controllers\Api\SubscriptionController;
+use App\Core\Controllers\AuthController;
+use App\Core\Controllers\ProfileController;
+use App\Core\Controllers\EntitlementController;
+use App\Core\Controllers\ActivitySummaryController;
+use App\Core\Controllers\ConsentController;
+use App\Core\Controllers\ModuleController;
+use App\Core\Controllers\UserModuleController;
+use App\Core\Controllers\NotificationController;
+use App\Core\Controllers\SettingController;
+use App\Core\Controllers\StreakController;
+use App\Core\Controllers\BodyMeasurementController;
+use App\Core\Controllers\GoalController;
+use App\Core\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -62,5 +62,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/consents/revoke',    [ConsentController::class, 'revoke']);
     Route::post('/consents/check',     [ConsentController::class, 'check']);
 
+    // ── Module routes ────────────────────────────────────────────────────────
+    // Each developer adds exactly ONE line below for their module.
     require __DIR__ . '/../app/Modules/Nutrition/routes.php';
+    // require __DIR__ . '/../app/Modules/Activity/routes.php';
+    // require __DIR__ . '/../app/Modules/Workout/routes.php';
+    // require __DIR__ . '/../app/Modules/Sleep/routes.php';
+    // require __DIR__ . '/../app/Modules/MentalWellness/routes.php';
+    // require __DIR__ . '/../app/Modules/WeightBody/routes.php';
+    // ─────────────────────────────────────────────────────────────────────────
 });

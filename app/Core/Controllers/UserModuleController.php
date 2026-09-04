@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserModule;
+use App\Core\Models\UserModule;
 use Illuminate\Http\Request;
 
 class UserModuleController extends Controller

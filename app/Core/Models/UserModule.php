@@ -1,23 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ActivitySummary extends Model
+class UserModule extends Model
 {
     protected $fillable = [
         'user_id',
-        'date',
-        'steps',
-        'calories_burned',
-        'active_minutes',
-        'distance_km',
-        'water_ml',
+        'module_name',
+        'is_active',
+        'activated_at',
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'is_active'    => 'boolean',
+        'activated_at' => 'datetime',
     ];
 
     public function user()

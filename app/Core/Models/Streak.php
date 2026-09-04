@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserModule extends Model
+class Streak extends Model
 {
     protected $fillable = [
         'user_id',
-        'module_name',
-        'is_active',
-        'activated_at',
+        'type',
+        'current_streak',
+        'longest_streak',
+        'last_activity_date',
     ];
 
     protected $casts = [
-        'is_active'    => 'boolean',
-        'activated_at' => 'datetime',
+        'last_activity_date' => 'date',
     ];
 
     public function user()

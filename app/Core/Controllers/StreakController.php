@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Streak;
+use App\Core\Models\Streak;
 use Illuminate\Http\Request;
 
 class StreakController extends Controller
