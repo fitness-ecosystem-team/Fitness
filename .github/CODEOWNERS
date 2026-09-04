@@ -1,0 +1,13 @@
+# Core files — only the Core developer (@fitnesscore1234-bit) can approve PRs touching these
+backend/app/Core/              @fitnesscore1234-bit
+backend/config/                @fitnesscore1234-bit
+backend/routes/api.php         @fitnesscore1234-bit
+backend/database/migrations/   @fitnesscore1234-bit
+Dockerfile                     @fitnesscore1234-bit
+.gitignore                     @fitnesscore1234-bit
+.github/                       @fitnesscore1234-bit
+
+# Module files — each developer owns only their module folder
+# backend/app/Modules/Nutrition/   @nutrition-developer-username
+# backend/app/Modules/Fitness/     @fitness-developer-username
+# (add more as modules are assigned)
