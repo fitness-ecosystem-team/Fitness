@@ -19,14 +19,15 @@ WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libpq-dev \
-    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-install pdo_pgsql pdo_sqlite \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer_deps /app /app
 COPY --from=frontend /app/public/build /app/public/build
 
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && touch database/database.sqlite \
+    && chown -R www-data:www-data storage bootstrap/cache database/database.sqlite
 
 ENV APP_ENV=production
 ENV APP_DEBUG=false
