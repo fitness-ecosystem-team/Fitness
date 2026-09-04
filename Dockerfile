@@ -2,17 +2,8 @@ FROM composer:2 AS composer_deps
 WORKDIR /app
 COPY backend/composer.json backend/composer.lock ./
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --no-scripts
-COPY backend/ ./
+COPY backend/ .
 RUN composer dump-autoload --optimize --no-dev
-
-FROM node:22-bookworm-slim AS frontend
-WORKDIR /app
-COPY backend/package.json ./
-RUN npm install
-COPY backend/resources ./resources
-COPY backend/vite.config.js ./
-COPY backend/public ./public
-RUN npm run build
 
 FROM php:8.4-cli-bookworm AS runtime
 WORKDIR /app
@@ -23,11 +14,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer_deps /app /app
-COPY --from=frontend /app/public/build /app/public/build
 
 RUN mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache \
-    && touch database/database.sqlite \
-    && chown -R www-data:www-data storage bootstrap/cache database/database.sqlite
+    && chown -R www-data:www-data storage bootstrap/cache
 
 ENV APP_ENV=production
 ENV APP_DEBUG=false
