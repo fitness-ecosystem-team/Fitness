@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Setting;
+use App\Core\Models\Setting;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller

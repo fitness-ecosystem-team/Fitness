@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Profile;
+use App\Core\Models\Profile;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Core\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserConsent;
+use App\Core\Models\UserConsent;
 use Illuminate\Http\Request;
 
 class ConsentController extends Controller

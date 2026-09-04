@@ -1,21 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Streak extends Model
+class ActivitySummary extends Model
 {
     protected $fillable = [
         'user_id',
-        'type',
-        'current_streak',
-        'longest_streak',
-        'last_activity_date',
+        'date',
+        'steps',
+        'calories_burned',
+        'active_minutes',
+        'distance_km',
+        'water_ml',
     ];
 
     protected $casts = [
-        'last_activity_date' => 'date',
+        'date' => 'date',
     ];
 
     public function user()
