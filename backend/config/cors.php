@@ -9,6 +9,7 @@ return [
         'http://localhost:8081',
         'http://localhost:19006',
         'http://localhost:3000',
+        'https://fitness-ecosystem-app.onrender.com',
     ],
 
     'allowed_origins_patterns' => [],
