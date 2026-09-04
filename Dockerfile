@@ -1,17 +1,17 @@
 FROM composer:2 AS composer_deps
 WORKDIR /app
-COPY composer.json composer.lock ./
+COPY backend/composer.json backend/composer.lock ./
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --no-scripts
-COPY . .
+COPY backend/ ./
 RUN composer dump-autoload --optimize --no-dev
 
 FROM node:22-bookworm-slim AS frontend
 WORKDIR /app
-COPY package.json ./
+COPY backend/package.json ./
 RUN npm install
-COPY resources ./resources
-COPY vite.config.js ./
-COPY public ./public
+COPY backend/resources ./resources
+COPY backend/vite.config.js ./
+COPY backend/public ./public
 RUN npm run build
 
 FROM php:8.4-cli-bookworm AS runtime
