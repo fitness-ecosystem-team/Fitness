@@ -11,7 +11,7 @@ RUN npm ci --workspace=@fitness/backend --include-workspace-root
 COPY backend ./backend
 RUN npm run prisma:generate --workspace=@fitness/backend && npm run build --workspace=@fitness/backend
 
-FROM node:24-alpine
+FROM node:24-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=10000

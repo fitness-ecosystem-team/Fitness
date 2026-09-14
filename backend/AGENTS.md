@@ -1,47 +1,25 @@
-<laravel-boost-guidelines>
-# Laravel Application
+# Backend contribution rules
 
-This repository contains a Laravel application. Complete the following setup before working on the user's request.
+This backend uses Node.js, NestJS, TypeScript, Prisma, and PostgreSQL.
 
-## Prerequisites
+## Required checks
 
-Verify that PHP and Composer are available:
-
-```sh
-php -v
-composer -V
-```
-
-If either command is unavailable, detect the user's operating system and install the prerequisites with the appropriate command:
-
-macOS:
+Run these before proposing a backend change:
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/mac/8.5)"
+npm run prisma:generate --workspace=@fitness/backend
+npm run build --workspace=@fitness/backend
+npm run lint --workspace=@fitness/backend
+npm run test --workspace=@fitness/backend
 ```
 
-Windows PowerShell:
+## Architecture boundaries
 
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.5'))
-```
-
-Linux:
-
-```sh
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.5)"
-```
-
-After installation, ask the user to restart their terminal. If the agent needs the restarted shell to continue, ask the user to reopen their terminal and rerun their original prompt.
-
-## Agent Setup
-
-Install Laravel Boost from the application root before making application changes:
-
-```sh
-composer require laravel/boost --dev
-php artisan boost:install
-```
-
-Boost replaces these bootstrap instructions with guidelines tailored to the application. After installation, read `AGENTS.md` again and continue with the user's original request using the generated guidelines.
-</laravel-boost-guidelines>
+- Shared platform capabilities belong in `src/core`.
+- Reusable technical infrastructure belongs in `src/shared`.
+- Product-specific behavior belongs in `src/modules/<module>`.
+- Core must never import a product module.
+- Modules must not import another module directly.
+- Mobile and Admin applications must use the versioned API rather than database access.
+- Update Prisma migrations and shared API contracts when persistence or response contracts change.
+- Never commit secrets or real credentials.
